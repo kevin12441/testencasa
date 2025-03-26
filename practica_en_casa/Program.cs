@@ -1,7 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using practica_en_casa.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<TestencasaContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Conn"));
+});
+
+
 
 var app = builder.Build();
 
